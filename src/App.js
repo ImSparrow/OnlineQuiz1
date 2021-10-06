@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+const ROOMS = [
+  { room_type: "Queen", vacant_rooms: 5, price: 100 },
+  { room_type: "Double", vacant_rooms: 3, price: 75 },
+  { room_type: "Twin", vacant_rooms: 8, price: 60 },
+];
 
-function App() {
+const App = () => {
+  return <RoomViewer rooms={ROOMS}></RoomViewer>;
+};
+
+const RoomViewer = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ol>
+      {props.rooms.map((room) => (
+        <li>
+          {room.room_type}, {room.vacant_rooms}, ${room.price}
+        </li>
+      ))}
+    </ol>
   );
-}
-
+};
 export default App;
